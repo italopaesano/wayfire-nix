@@ -1,0 +1,60 @@
+/* Aspetto del pannello della VM di test.
+ *
+ * Volutamente sobrio e ad alto contrasto: serve a vedere bene cosa succede
+ * mentre si prova il compositore, non a essere elegante. In particolare la
+ * finestra attiva e quelle ridotte a icona devono distinguersi a colpo
+ * d'occhio nell'elenco. */
+
+* {
+  font-family: sans-serif;
+  font-size: 13px;
+  border: none;
+  border-radius: 0;
+}
+
+window#waybar {
+  background: #16263d;
+  color: #e8eef7;
+}
+
+#workspaces button {
+  padding: 0 10px;
+  color: #9fb3cc;
+  background: transparent;
+}
+
+#workspaces button.active {
+  color: #ffffff;
+  background: #2e4f7d;
+}
+
+/* Elenco finestre: è il motivo principale per cui esiste questo pannello. */
+#taskbar button {
+  padding: 0 10px;
+  margin: 2px 2px;
+  color: #cfe0f5;
+  background: #22375a;
+}
+
+/* Finestra con il fuoco. */
+#taskbar button.active {
+  background: #3b6ba8;
+  color: #ffffff;
+}
+
+/* Finestra ridotta a icona: resta visibile qui, e cliccandola torna su. */
+#taskbar button.minimized {
+  color: #7f93ad;
+  background: #1b2c47;
+  font-style: italic;
+}
+
+#cpu, #memory, #clock {
+  padding: 0 10px;
+  color: #cfe0f5;
+}
+
+#clock {
+  font-weight: bold;
+  color: #ffffff;
+}

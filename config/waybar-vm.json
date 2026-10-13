@@ -1,0 +1,56 @@
+{
+  "// nota": [
+    "Pannello per la VM di test di Wayfire.",
+    "",
+    "La configurazione predefinita di waybar (/etc/xdg/waybar/config.jsonc)",
+    "qui non va bene: usa moduli sway/* che funzionano SOLO sotto Sway e",
+    "sotto Wayfire restano muti. Per questo il pannello mostrava soltanto",
+    "cpu, memoria, rete e orologio.",
+    "",
+    "Qui si usano invece due moduli basati su protocolli standard, che",
+    "Wayfire implementa:",
+    " - wlr/taskbar      elenco delle finestre aperte, via",
+    "                    foreign-toplevel-manager (plugin foreign-toplevel).",
+    "                    E' il pezzo che mancava: senza, una finestra ridotta",
+    "                    a icona spariva senza modo di recuperarla.",
+    " - ext/workspaces   indicatore dei workspace, via ext-workspace.",
+    "",
+    "Sta nella cartella condivisa, quindi si puo' modificare dall'host e",
+    "rivedere il risultato riavviando solo waybar, senza ricostruire la VM."
+  ],
+
+  "layer": "top",
+  "position": "bottom",
+  "height": 32,
+
+  "modules-left": ["ext/workspaces"],
+  "modules-center": ["wlr/taskbar"],
+  "modules-right": ["cpu", "memory", "clock"],
+
+  "ext/workspaces": {
+    "format": "{name}"
+  },
+
+  "wlr/taskbar": {
+    "format": "{icon} {title:.20}",
+    "icon-size": 16,
+    "tooltip-format": "{title}",
+    "on-click": "activate",
+    "on-click-middle": "close"
+  },
+
+  "cpu": {
+    "format": "cpu {usage}%",
+    "interval": 5
+  },
+
+  "memory": {
+    "format": "ram {percentage}%",
+    "interval": 5
+  },
+
+  "clock": {
+    "format": "{:%H:%M}",
+    "tooltip-format": "<big>{:%A %d %B %Y}</big>"
+  }
+}

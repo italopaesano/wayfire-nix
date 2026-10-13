@@ -1,0 +1,11 @@
+# risultati delle build e radici GC
+result
+result-*
+.gcroots/
+
+# immagini della macchina virtuale e chiavi generate
+*.qcow2
+ssh/
+
+# log delle prove
+logs/

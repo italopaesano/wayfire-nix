@@ -1,0 +1,48 @@
+{
+  "nodes": {
+    "nixpkgs": {
+      "locked": {
+        "lastModified": 1791734076,
+        "narHash": "sha256-i5qk1kLiit98rRbh1AXmWBNT9QXC/y4l5Wk/u5EdpDQ=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "7fd4004d0511991fff3a0524856a9be09e28c5f0",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "root": {
+      "inputs": {
+        "nixpkgs": "nixpkgs",
+        "wayfire-src": "wayfire-src"
+      }
+    },
+    "wayfire-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1791491437,
+        "narHash": "sha256-2aCEhlMPJVWzA/k6F/Birc0i7WeclEGkxbcfsds8mCA=",
+        "ref": "master",
+        "rev": "fdf8832e4263db54e2fef2abf30326e16877b8a2",
+        "revCount": 3572,
+        "submodules": true,
+        "type": "git",
+        "url": "https://github.com/WayfireWM/wayfire.git"
+      },
+      "original": {
+        "ref": "master",
+        "rev": "fdf8832e4263db54e2fef2abf30326e16877b8a2",
+        "submodules": true,
+        "type": "git",
+        "url": "https://github.com/WayfireWM/wayfire.git"
+      }
+    }
+  },
+  "root": "root",
+  "version": 7
+}

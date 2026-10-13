@@ -1,0 +1,136 @@
+[
+  {
+    "// nota": [
+      "BARRA 1 — LANCIATORI (quella piu' in basso).",
+      "",
+      "Due barre sulla stessa schermata si ottengono passando un ELENCO di",
+      "configurazioni invece di un oggetto solo: waybar le crea entrambe.",
+      "Essendo entrambe ancorate in basso, si impilano nell'ordine in cui",
+      "compaiono qui: questa e' la prima, quindi finisce sul bordo inferiore,",
+      "e la barra delle finestre si posiziona sopra.",
+      "",
+      "I lanciatori sono moduli 'custom': un'etichetta piu' un comando da",
+      "eseguire al clic. Waybar non ha un menu applicazioni integrato, quindi",
+      "il pulsante Menu richiama wofi, che quel ruolo lo svolge."
+    ],
+
+    "name": "lanciatori",
+    "layer": "top",
+    "position": "bottom",
+    "height": 34,
+
+    "modules-left": [
+      "custom/mostra-desktop",
+      "custom/menu",
+      "custom/terminale",
+      "custom/file",
+      "custom/editor",
+      "custom/calcolatrice"
+    ],
+    "modules-center": [],
+    "modules-right": ["cpu", "memory", "clock"],
+
+    "custom/mostra-desktop": {
+      "format": "\uf108",
+      "on-click": "ydotool key 125:1 32:1 32:0 125:0",
+      "tooltip": true,
+      "tooltip-format": "Mostra la scrivania (Super+D)"
+    },
+    "custom/menu": {
+      "format": "  Applicazioni",
+      "on-click": "wofi --show drun",
+      "tooltip": false
+    },
+    "custom/terminale": {
+      "format": "  Terminale",
+      "on-click": "foot",
+      "tooltip": false
+    },
+    "custom/file": {
+      "format": "  File",
+      "on-click": "pcmanfm",
+      "tooltip": false
+    },
+    "custom/editor": {
+      "format": "  Editor",
+      "on-click": "mousepad",
+      "tooltip": false
+    },
+    "custom/calcolatrice": {
+      "format": "  Calcolatrice",
+      "on-click": "galculator",
+      "tooltip": false
+    },
+
+    "cpu":    { "format": "cpu {usage}%", "interval": 5 },
+    "memory": { "format": "ram {percentage}%", "interval": 5 },
+    "clock":  {
+      "format": "{:%H:%M}",
+      "tooltip-format": "<big>{:%A %d %B %Y}</big>\n<tt>{calendar}</tt>"
+    }
+  },
+
+  {
+    "// nota": [
+      "BARRA 2 — FINESTRE APERTE (sopra quella dei lanciatori).",
+      "",
+      "Contiene solo l'elenco delle finestre, con le sole icone come",
+      "richiesto. Il modulo wlr/taskbar usa il protocollo",
+      "foreign-toplevel-manager, che Wayfire implementa tramite il plugin",
+      "foreign-toplevel: senza quel plugin questa barra resterebbe vuota.",
+      "",
+      "Le icone vengono prese dai file .desktop dei programmi e dal tema",
+      "icone installato nel sistema (Papirus). Un programma senza .desktop",
+      "mostrera' un'icona generica.",
+      "",
+      "L'elenco sta in modules-left: ancorato a sinistra, il blocco parte",
+      "dal bordo sinistro e cresce verso destra man mano che si aprono",
+      "finestre. Spostandolo in modules-right si otterrebbe il contrario,",
+      "in modules-center resterebbe centrato."
+    ],
+
+    "name": "finestre",
+    "layer": "top",
+    "position": "bottom",
+    "height": 40,
+
+    "modules-left": ["wlr/taskbar"],
+    "modules-center": [],
+    "modules-right": ["ext/workspaces"],
+
+    "ext/workspaces": {
+      "// nota": [
+        "Il compositore assegna ai workspace nomi grezzi del tipo",
+        "'Virtual-1:workspace-0-0', illeggibili su una barra. format-icons",
+        "li rimappa su numeri. Se un giorno cambiassero i nomi, la voce",
+        "'default' evita che il selettore resti vuoto."
+      ],
+      "format": "{icon}",
+      "// clic": [
+        "on-click NON e' attivo di default su questo modulo: senza questa",
+        "riga i numeri si vedono ma cliccarli non fa nulla. Verificato con",
+        "WAYLAND_DEBUG: waybar riceve le informazioni sui workspace ma non",
+        "invia alcuna richiesta di attivazione finche' non glielo si dice."
+      ],
+      "on-click": "activate",
+      "format-icons": {
+        "Virtual-1:workspace-0-0": "1",
+        "Virtual-1:workspace-1-0": "2",
+        "Virtual-1:workspace-2-0": "3",
+        "Virtual-1:workspace-3-0": "4",
+        "default": "•"
+      },
+      "sort-by-id": true
+    },
+
+    "wlr/taskbar": {
+      "format": "{icon}",
+      "icon-size": 26,
+      "icon-theme": "Papirus-Dark",
+      "tooltip-format": "{title}",
+      "on-click": "activate",
+      "on-click-middle": "close",
+      "all-outputs": false
+    }
+  }
+]

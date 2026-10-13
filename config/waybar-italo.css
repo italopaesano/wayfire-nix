@@ -1,0 +1,118 @@
+/* Aspetto delle due barre di Italo.
+ *
+ * Le due barre si distinguono con #waybar.<nome>, dove <nome> e' il campo
+ * "name" della rispettiva configurazione: "lanciatori" e "finestre".
+ *
+ * La barra delle finestre e' volutamente piu' scura e compatta: deve farsi
+ * notare meno di quella dei lanciatori, che e' quella con cui si interagisce
+ * di piu'. */
+
+* {
+  font-family: "Font Awesome 7 Free", sans-serif;
+  font-size: 13px;
+  border: none;
+  border-radius: 0;
+  min-height: 0;
+}
+
+/* ── Barra dei lanciatori (in basso) ──────────────────────────────────── */
+
+window#waybar.lanciatori {
+  background: #16263d;
+  color: #e8eef7;
+  border-top: 1px solid #2e4f7d;
+}
+
+#custom-mostra-desktop,
+#custom-menu,
+#custom-terminale,
+#custom-file,
+#custom-editor,
+#custom-calcolatrice {
+  padding: 0 14px;
+  margin: 3px 2px;
+  background: #22375a;
+  color: #cfe0f5;
+}
+
+/* Il menu applicazioni e' il pulsante principale: si distingue dagli altri. */
+#custom-menu {
+  background: #3b6ba8;
+  color: #ffffff;
+  font-weight: bold;
+}
+
+/* Il pulsante "mostra scrivania" e' solo un'icona: piu' stretto degli altri. */
+#custom-mostra-desktop {
+  padding: 0 12px;
+  font-size: 15px;
+}
+
+#custom-mostra-desktop:hover,
+#custom-menu:hover,
+#custom-terminale:hover,
+#custom-file:hover,
+#custom-editor:hover,
+#custom-calcolatrice:hover {
+  background: #4a7ab5;
+  color: #ffffff;
+}
+
+#cpu, #memory, #clock {
+  padding: 0 12px;
+  color: #cfe0f5;
+}
+
+#clock {
+  font-weight: bold;
+  color: #ffffff;
+}
+
+/* ── Barra delle finestre (sopra i lanciatori) ────────────────────────── */
+
+window#waybar.finestre {
+  background: #101d30;
+  border-top: 1px solid #22375a;
+}
+
+/* Selettore dei workspace, a destra della barra finestre. */
+#workspaces button {
+  padding: 0 12px;
+  margin: 4px 2px;
+  background: #1a2d49;
+  color: #8fa7c4;
+  font-weight: bold;
+}
+
+/* Workspace su cui ti trovi adesso. */
+#workspaces button.active {
+  background: #3b6ba8;
+  color: #ffffff;
+}
+
+#workspaces button:hover {
+  background: #2e4f7d;
+  color: #ffffff;
+}
+
+#taskbar button {
+  padding: 0 10px;
+  margin: 2px 3px;
+  background: transparent;
+  border-bottom: 3px solid transparent;
+}
+
+/* Finestra con il fuoco: riga luminosa sotto l'icona. */
+#taskbar button.active {
+  background: #22375a;
+  border-bottom: 3px solid #5a9ae0;
+}
+
+/* Finestra ridotta a icona: smorzata, ma sempre raggiungibile con un clic. */
+#taskbar button.minimized {
+  opacity: 0.45;
+}
+
+#taskbar button:hover {
+  background: #2e4f7d;
+}
