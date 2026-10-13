@@ -51,6 +51,26 @@ Le patch sono applicate sopra i sorgenti upstream, non su un fork: resta
 chiaro cosa è originale e cosa è aggiunto, e il materiale è pronto da
 proporre a monte.
 
+## Due modi d'uso, con requisiti diversi
+
+Il contenuto si divide in due parti, ed è bene non confonderle.
+
+**Il flake è autonomo.** Scarica tutto da solo, non richiede nient'altro e
+funziona su qualunque macchina con Nix. È quanto serve per compilare e
+provare Wayfire con le patch.
+
+**Gli script e la macchina virtuale richiedono un clone locale** di Wayfire
+in `src/`, perché servono il ciclo di sviluppo: compilano ciò che hai sotto
+mano, non ciò che sta su GitHub. Il clone non è incluso qui — va creato:
+
+```sh
+git clone https://github.com/WayfireWM/wayfire.git src
+git -C src submodule update --init --recursive
+```
+
+Senza quella cartella `scripts/build.sh`, `scripts/run-vm.sh` e gli altri non
+hanno nulla da compilare.
+
 ## Le espressioni in `nix/`
 
 | file | contenuto |

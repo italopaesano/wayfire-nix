@@ -11,7 +11,7 @@
 # si passa il percorso, oppure si usa il flake alla radice, che scarica i
 # sorgenti da GitHub e non dipende da nessun clone locale.
 { pkgs ? import <nixpkgs> { }
-, sorgenti ? ../../src
+, sorgenti ? ../src
 , rev ? "unknown"
 , branch ? "unknown"
 }:

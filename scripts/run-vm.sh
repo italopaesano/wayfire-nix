@@ -58,7 +58,7 @@ echo "Modalità grafica: $GRAFICA"
 echo "Costruzione della VM (la prima volta è lunga: compila Wayfire e wlroots)..."
 # L'output va in .gcroots/ come fa gcroot.sh: così un nix-collect-garbage
 # non cancella la VM appena costruita.
-nix-build "$ROOT/vm/default.nix" \
+nix-build "$ROOT/nix/default.nix" \
   --argstr rev "$REV" \
   --argstr branch "$BRANCH" \
   --argstr grafica "$GRAFICA" \
